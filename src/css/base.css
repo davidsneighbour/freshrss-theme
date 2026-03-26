@@ -760,3 +760,16 @@ th {
 		display: none;
 	}
 }
+
+/* and here it starts */
+#global {
+  @apply relative;
+}
+.nav_menu {
+  @apply sticky top-0 left-0 z-10;
+}
+
+#bigMarkAsRead.big {
+  /* disable weird 100% margin for big mark as read button */
+  margin: auto;
+}

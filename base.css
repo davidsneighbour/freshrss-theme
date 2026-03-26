@@ -562,3 +562,15 @@ table {
     display: none;
   }
 }
+#global {
+  position: relative;
+}
+.nav_menu {
+  position: sticky;
+  top: calc(var(--spacing) * 0);
+  left: calc(var(--spacing) * 0);
+  z-index: 10;
+}
+#bigMarkAsRead.big {
+  margin: auto;
+}
