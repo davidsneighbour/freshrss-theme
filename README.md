@@ -1,18 +1,20 @@
 # DNB Theme build setup
 
-This folder is intended to live at `freshrss/dnb-theme` in the following local layout:
+This folder is intended to live at `freshrss/freshrss-theme` in the following local layout:
 
 ```text
 freshrss/
   config/
-  dnb-theme/
-  freshrss-repo/
+  freshrss-theme/
+  FreshRSS/
 ```
+
+A sample implementation (with docker-compose.yaml) can be found [in my dotfiles repository](https://github.com/davidsneighbour/dotfiles/tree/main/containers/locutus/freshrss).
 
 ## What each folder does
 
-* `config/` is mounted into Docker as your FreshRSS config folder.
-* `freshrss-theme/` is your custom theme project and is mounted into the container's themes directory.
+* `config/` is mounted into Docker as your FreshRSS config folder (might differ per setup)
+* `freshrss-theme/` is the custom theme project and is mounted into the container's themes directory.
 * `FreshRSS/` is a local clone of the FreshRSS repository. It is not mounted into Docker. It is only used as a reference tree and as an input source for Tailwind scanning.
 
 ## Why the Tailwind scan points outside the theme
