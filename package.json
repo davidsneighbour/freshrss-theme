@@ -11,13 +11,16 @@
     "watch:css": "node scripts/build.ts watch",
     "watch:css:nolint": "node scripts/build.ts watch --no-lint",
     "lint:css": "stylelint \"./src/css/**/*.css\" \"./base.css\" --fix --cache",
-    "help:css": "node ./scripts/build.ts --help"
+    "help:css": "node ./scripts/build.ts --help",
+    "release": "DEBUG=* release-it --config .release-it.ts"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.2.2",
-    "chokidar": "^4.0.3",
-    "stylelint": "^17.5.0",
-    "stylelint-config-standard": "^40.0.0",
-    "tailwindcss": "^4.2.2"
+    "@tailwindcss/cli": "4.2.2",
+    "chokidar": "5.0.0",
+    "stylelint": "17.5.0",
+    "stylelint-config-standard": "40.0.0",
+    "tailwindcss": "4.2.2",
+    "@release-it/conventional-changelog": "10.0.6",
+    "release-it": "19.2.4"
   }
 }
