@@ -1,6 +1,6 @@
 {
   "name": "@davidsneighbour/freshrss-theme",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A custom theme for FreshRSS with TailwindCSS and stylelint.",
   "private": true,
   "type": "module",
