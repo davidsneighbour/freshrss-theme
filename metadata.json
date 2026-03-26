@@ -1,0 +1,11 @@
+{
+  "name": "DNB Theme",
+  "author": "Patrick Kollitsch",
+  "description": "A FreshRSS theme developed locally with Tailwind CSS and Stylelint.",
+  "version": 0.2,
+  "files": [
+    "frss.css",
+    "base.css"
+  ],
+  "theme-color": "#123456"
+}

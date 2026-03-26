@@ -1,0 +1,18 @@
+{
+  "input": "./src/css/base.css",
+  "output": "./base.css",
+  "content": [
+    "./metadata.json",
+    "./src/**/*.{css,ts,js,txt}",
+    "./theme/**/*.{php,phtml,html,twig,js}",
+    "../FreshRSS/p/**/*.{php,phtml,html,twig,js}",
+    "../FreshRSS/app/**/*.{php,phtml,html,twig,js}"
+  ],
+  "watch": [
+    "./metadata.json",
+    "./src/**/*.{css,ts,js,txt}",
+    "./theme/**/*.{php,phtml,html,twig,js}",
+    "../FreshRSS/p/**/*.{php,phtml,html,twig,js}",
+    "../FreshRSS/app/**/*.{php,phtml,html,twig,js}"
+  ]
+}
