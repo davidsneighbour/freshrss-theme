@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.0.0...v1.0.1) (2026-03-26)
+
+### Bug Fixes
+
+* static toolbar on top and smaller read all section at bottom ([c5be894](https://github.com/davidsneighbour/kollitsch.dev/commit/c5be894332fcd3ea4ad1aed9cbb8c623360d3df8))
+
+### Documentation
+
+* **fix:** add note about dnb docker setup, and other fixes ([89b79b8](https://github.com/davidsneighbour/kollitsch.dev/commit/89b79b84676b4fd83ba7151f7e6dc352adadd905))
+
 ## 1.0.0 (2026-03-26)
 
 ### ⚠ BREAKING CHANGES
