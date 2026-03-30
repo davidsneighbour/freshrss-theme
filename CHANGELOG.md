@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.0.1...v1.1.0) (2026-03-30)
+
+### Features
+
+* add tailwind forms plugin ([28155b6](https://github.com/davidsneighbour/kollitsch.dev/commit/28155b66f09a89a25434bd41868b3fda9698734c))
+
+### Build
+
+* **deps:** update dependencies ([c1167ab](https://github.com/davidsneighbour/kollitsch.dev/commit/c1167ab182fdc868dffb11abe681f38aad2a7c15))
+
 ## [1.0.1](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.0.0...v1.0.1) (2026-03-26)
 
 ### Bug Fixes
