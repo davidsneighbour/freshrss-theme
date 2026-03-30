@@ -19,7 +19,7 @@
   "devDependencies": {
     "@tailwindcss/cli": "4.2.2",
     "chokidar": "5.0.0",
-    "stylelint": "17.5.0",
+    "stylelint": "17.6.0",
     "stylelint-config-standard": "40.0.0",
     "tailwindcss": "4.2.2",
     "@release-it/conventional-changelog": "10.0.6",
