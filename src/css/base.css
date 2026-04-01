@@ -70,7 +70,7 @@ th {
 }
 
 .form-group.form-actions .btn {
-	margin: 0 10px;
+	/* margin: 0 10px; */
 }
 
 .form-group .group-name {
@@ -79,8 +79,7 @@ th {
 }
 
 .form-group .group-controls {
-	min-height: 25px;
-	padding: 5px 0;
+  @apply flex flex-row gap-4 py-2;
 }
 
 /*=== Buttons */
@@ -117,13 +116,7 @@ th {
 }
 
 .btn {
-	margin: 0;
-	padding: 0.25rem 0.5rem;
-	min-height: 25px;
-	min-width: 15px;
-	font-size: 0.9rem;
-	line-height: 1.7;
-	vertical-align: middle;
+	@apply rounded-md px-3.5 py-2.5 text-sm font-semibold;
 }
 
 .btn:hover {
@@ -136,13 +129,7 @@ th {
 }
 
 .btn-important {
-	font-weight: normal;
-}
-
-.btn-important:hover {
-}
-
-.btn-important:active {
+  @apply bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30;
 }
 
 .btn-attention {
