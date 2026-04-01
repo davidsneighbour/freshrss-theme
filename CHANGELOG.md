@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.0...v1.1.1) (2026-04-01)
+
+### Bug Fixes
+
+* button formatting in freshrss theme ([5398d9f](https://github.com/davidsneighbour/kollitsch.dev/commit/5398d9f46fa4ab1bd3c4a34382d5d8d254fb5325))
+
 ## [1.1.0](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.0.1...v1.1.0) (2026-03-30)
 
 ### Features
