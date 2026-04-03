@@ -9,11 +9,13 @@
       "Courier New", monospace;
     --color-indigo-400: oklch(67.3% 0.182 276.935);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
+    --color-black: #000;
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --font-weight-semibold: 600;
     --radius-md: 0.375rem;
+    --radius-2xl: 1rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -391,6 +393,15 @@ table {
 #global {
   height: calc(100% - 85px);
 }
+#aside_feed {
+  background-color: color-mix(in srgb, #000 25%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-black) 25%, transparent);
+  }
+  padding: calc(var(--spacing) * 4);
+  border-top-right-radius: var(--radius-2xl);
+  border-bottom-right-radius: var(--radius-2xl);
+}
 .aside.aside_feed {
   padding: 10px 0;
   text-align: center;
@@ -465,8 +476,20 @@ table {
 .flux_header .title {
   font-size: 0.9rem;
 }
-.flux .website .favicon {
-  padding: 5px;
+.flux .item.website a {
+  .favicon {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
+  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  .websiteName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 .flux .bottom {
   font-size: 0.8rem;

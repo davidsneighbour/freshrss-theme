@@ -381,6 +381,11 @@ th {
 .aside {
 }
 
+#aside_feed {
+  @apply bg-black/25 p-4;
+  @apply rounded-r-2xl;
+}
+
 .aside.aside_feed {
 	padding: 10px 0;
 	text-align: center;
@@ -527,8 +532,17 @@ th {
 	font-size: 0.9rem;
 }
 
-.flux .website .favicon {
-	padding: 5px;
+.flux .item.website a {
+  .favicon {
+
+    @apply size-6;
+  }
+
+  @apply flex flex-row items-center flex-nowrap gap-1;
+
+  .websiteName {
+    @apply overflow-hidden text-ellipsis;
+  }
 }
 
 .flux:not(.current):hover .item.title {
