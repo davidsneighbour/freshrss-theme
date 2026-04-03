@@ -1514,7 +1514,7 @@ a.website:hover .favicon {
 
 .flux .flux_header .item.thumbnail {
 	line-height: 0;
-	padding: var(--frss-padding-top-bottom) var(--frss-padding-flux-items);
+	/* padding: var(--frss-padding-top-bottom) var(--frss-padding-flux-items); */
 	height: 80px;
 }
 

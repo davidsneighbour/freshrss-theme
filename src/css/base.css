@@ -490,15 +490,22 @@ th {
 .transition .name {
 	padding: 0 10px 0 0;
 	font-size: 1.8em;
-	opacity: 0.3;
-	font-style: italic;
-	text-align: right;
+	@apply text-right text-black/30;
 }
 
 /*=== Index menu */
 .nav_menu {
-	text-align: center;
-	padding: 5px 0;
+	@apply text-center p-4;
+}
+
+#stream.normal {
+  @apply flex flex-col gap-2;
+  @apply max-w-7xl mx-auto;
+
+  .flux {
+    @apply odd:bg-white even:bg-gray-100;
+    @apply odd:hover:bg-gray-100 even:hover:bg-white;
+  }
 }
 
 /*=== Feed articles */
@@ -532,14 +539,18 @@ th {
 	font-size: 0.9rem;
 }
 
+.flux .item.thumbnail{
+  @apply p-0 bg-gray-200/20;
+  img {
+    @apply w-full h-full object-cover;
+  }
+}
+
 .flux .item.website a {
   .favicon {
-
     @apply size-6;
   }
-
   @apply flex flex-row items-center flex-nowrap gap-1;
-
   .websiteName {
     @apply overflow-hidden text-ellipsis;
   }
