@@ -530,6 +530,28 @@ th {
 .flux.favorite:not(.current):hover .item.title {
 }
 
+.flux ul {
+	@apply flex flex-row gap-1 justify-between h-full items-center;
+
+	li {
+		
+	}
+
+	.manage, .labels, .share, .link {
+		@apply text-xs;
+	}
+	.titleAuthorSummaryDate {
+		@apply grow;
+	}
+	.thumbnail {
+		
+		@apply p-0 bg-gray-200/20;
+		img {
+			@apply w-full h-full object-cover;
+		}
+	}
+}
+
 .flux_header {
 	font-size: 0.8rem;
 	cursor: pointer;
@@ -540,10 +562,6 @@ th {
 }
 
 .flux .item.thumbnail{
-  @apply p-0 bg-gray-200/20;
-  img {
-    @apply w-full h-full object-cover;
-  }
 }
 
 .flux .item.website a {
