@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.2](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.1...v1.1.2) (2026-04-05)
+
+### Bug Fixes
+
+* cleanup file layout ([39f4c7f](https://github.com/davidsneighbour/kollitsch.dev/commit/39f4c7f717023fa033babe37981db1e2f492ce6a))
+* content width and images ([5cee017](https://github.com/davidsneighbour/kollitsch.dev/commit/5cee017e7368811e914f8e9b824e7855caa19d29))
+* feed title and icon ([8c4b489](https://github.com/davidsneighbour/kollitsch.dev/commit/8c4b4892b7793ee6d736ef3e62a543318586851c))
+* item row flex design ([4963e13](https://github.com/davidsneighbour/kollitsch.dev/commit/4963e13f0298e50f4626023ed793df96aaf9abce))
+
 ## [1.1.1](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.0...v1.1.1) (2026-04-01)
 
 ### Bug Fixes
