@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.2...v1.1.3) (2026-04-05)
+
+### Build
+
+* **deps-dev:** Bump handlebars from 4.7.8 to 4.7.9 ([#1](https://github.com/davidsneighbour/freshrss-theme/issues/1)) ([6db7c61](https://github.com/davidsneighbour/kollitsch.dev/commit/6db7c61047ec8c55ea3c1d70fc185bc5135273f0))
+* **deps:** Bump defu from 6.1.4 to 6.1.6 ([bfab8a0](https://github.com/davidsneighbour/kollitsch.dev/commit/bfab8a0a8e49859d41a849e28208b2a2d0e8b982))
+
 ## [1.1.2](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.1...v1.1.2) (2026-04-05)
 
 ### Bug Fixes
