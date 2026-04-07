@@ -1512,9 +1512,9 @@ a.website:hover .favicon {
 	vertical-align: top;
 }
 
-.flux .flux_header .item.thumbnail {
+/* .flux .flux_header .item.thumbnail {
 	line-height: 0;
-	/* padding: var(--frss-padding-top-bottom) var(--frss-padding-flux-items); */
+ padding: var(--frss-padding-top-bottom) var(--frss-padding-flux-items); 
 	height: 80px;
 }
 
@@ -1557,7 +1557,7 @@ a.website:hover .favicon {
 	height: 100%;
 	overflow: hidden;
 	object-fit: cover;
-}
+} */
 
 
 .flux .flux_header .item.titleAuthorSummaryDate {
@@ -2260,8 +2260,7 @@ html.slider-active {
 	padding: var(--frss-padding-top-bottom) 3.5rem var(--frss-padding-top-bottom) 0;
 }
 
-.aside .category .tree-folder-title .title:not([data-unread="0"])::after,
-.aside .feed .item-title:not([data-unread="0"])::after {
+.aside .category .tree-folder-title .title:not([data-unread="0"])::after {
 	margin: var(--frss-padding-top-bottom) 0 0 0;
 	padding: 0.25rem 0.5rem;
 	min-width: 2rem;
