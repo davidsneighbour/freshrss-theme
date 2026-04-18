@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.4](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.3...v1.1.4) (2026-04-18)
+
+### Bug Fixes
+
+* theme changes ([5d1fbbb](https://github.com/davidsneighbour/kollitsch.dev/commit/5d1fbbb8465b5b04f5eed7dde80b09cc9e050be4))
+* various changes ([9be3a7a](https://github.com/davidsneighbour/kollitsch.dev/commit/9be3a7a66ad5dd9cb9285b3948d5e17554cdc7e7))
+
+### Build
+
+* **deps:** Bump lodash from 4.17.23 to 4.18.1 ([#3](https://github.com/davidsneighbour/freshrss-theme/issues/3)) ([e9c739a](https://github.com/davidsneighbour/kollitsch.dev/commit/e9c739a59b9fe349cdf84c1d0a453bfdab17ca0d))
+* **deps:** update dependencies ([f7ebb04](https://github.com/davidsneighbour/kollitsch.dev/commit/f7ebb041cb296bf33ae4e5ba080a3a09cba77dbc))
+* **fix:** rebuild stylelint integration to not fail ([5f752d6](https://github.com/davidsneighbour/kollitsch.dev/commit/5f752d6c8d7ab430e4ea989c1c87d231ffaa197a))
+
 ## [1.1.3](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.2...v1.1.3) (2026-04-05)
 
 ### Build
