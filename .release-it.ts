@@ -18,7 +18,7 @@ const config = {
     release: true,
     releaseName: 'v${version}',
     skipChecks: true,
-    tokenRef: 'GITHUB_TOKEN_ADMIN_PRIVATE',
+    tokenRef: 'GITHUB_TOKEN_ADMIN_PRIVATE', //
   },
   plugins: {
     '@release-it/conventional-changelog': {
