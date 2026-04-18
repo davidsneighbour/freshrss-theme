@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.5](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.4...v1.1.5) (2026-04-18)
+
+### Build
+
+* **fix:** remove debugging from release ([0872ad4](https://github.com/davidsneighbour/kollitsch.dev/commit/0872ad4e3e017787e2d8b8eeaf72b1d7c6b90a09))
+
 ## [1.1.4](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.3...v1.1.4) (2026-04-18)
 
 ### Bug Fixes
