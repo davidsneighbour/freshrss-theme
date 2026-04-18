@@ -1,5 +1,7 @@
+/* stylelint-disable */
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
+/* stylelint-enable */
 
 /* stylelint-disable block-no-empty  selector-class-pattern */
 
@@ -237,25 +239,25 @@
 	--color-red-100: #ffc6c6;
 	--color-red-200: #ffa0a0;
 	--color-red-300: #ff7b7b;
-	--color-red-400: #ff5555;
+	--color-red-400: #f55;
 	--color-red-500: #fd3131;
 	--color-red-600: #fb0e0e;
 	--color-red-700: #dd0606;
 	--color-red-800: #b70707;
 	--color-red-900: #910707;
-	--color-red: #ff5555;
+	--color-red: #f55;
 
 	--color-marcelin-50: #ffecec;
 	--color-marcelin-100: #ffc6c6;
 	--color-marcelin-200: #ffa0a0;
 	--color-marcelin-300: #ff7b7b;
-	--color-marcelin-400: #ff5555;
+	--color-marcelin-400: #f55;
 	--color-marcelin-500: #fd3131;
 	--color-marcelin-600: #fb0e0e;
 	--color-marcelin-700: #dd0606;
 	--color-marcelin-800: #b70707;
 	--color-marcelin-900: #910707;
-	--color-marcelin: #ff5555;
+	--color-marcelin: #f55;
 
 	/* yellow / lincoln */
 	--color-yellow-50: #fefff8;
@@ -281,8 +283,6 @@
 	--color-lincoln-800: #abb811;
 	--color-lincoln-900: #899410;
 	--color-lincoln: #f1fa8c;
-
-
 
 	--link-color: var(--color-blue-500);
 	--link-color-hover: var(--color-blue-700);
@@ -312,9 +312,9 @@ table {
 	text-align: center;
 }
 
-/*=== COMPONENTS */
-/*===============*/
-/*=== Forms */
+/* === COMPONENTS */
+/* =============== */
+/* === Forms */
 .form-group.form-actions {
 	padding: 5px 0;
 }
@@ -332,7 +332,7 @@ table {
 	@apply flex flex-row gap-4 py-2;
 }
 
-/*=== Buttons */
+/* === Buttons */
 .stick input,
 .stick .btn {}
 
@@ -380,7 +380,7 @@ table {
 
 .btn-attention:active {}
 
-/*=== Navigation */
+/* === Navigation */
 .nav-list .nav-header,
 .nav-list .item {
 	line-height: 2.5;
@@ -415,7 +415,7 @@ table {
 	text-align: center;
 }
 
-/*=== Dropdown */
+/* === Dropdown */
 .dropdown-menu {
 	margin: 5px 0 0;
 	padding: 5px 0;
@@ -464,7 +464,7 @@ table {
 	padding: 2px 5px;
 }
 
-/*=== Alerts */
+/* === Alerts */
 
 .alert>a {
 	text-decoration: underline;
@@ -476,7 +476,7 @@ table {
 
 .alert-error {}
 
-/*=== Pagination */
+/* === Pagination */
 .pagination {
 	text-align: center;
 }
@@ -505,7 +505,7 @@ table {
 
 
 
-/*=== Boxes */
+/* === Boxes */
 .box {}
 
 .box .box-title {}
@@ -514,7 +514,7 @@ table {
 
 .box .box-content .item {}
 
-/*=== Tree */
+/* === Tree */
 .tree {
 	margin: 10px 0;
 }
@@ -549,9 +549,9 @@ table {
 
 .tree-folder-items>.item.active>a {}
 
-/*=== STRUCTURE */
-/*===============*/
-/*=== Header */
+/* === STRUCTURE */
+/* =============== */
+/* === Header */
 .header {
 	height: 85px;
 }
@@ -573,7 +573,7 @@ table {
 	width: 350px;
 }
 
-/*=== Body */
+/* === Body */
 #global {
 	height: calc(100% - 85px);
 }
@@ -594,7 +594,7 @@ table {
 	margin: 10px 0 50px;
 }
 
-/*=== Aside main page (categories) */
+/* === Aside main page (categories) */
 .aside_feed .tree-folder-title>.title:not([data-unread="0"])::after {
 	position: absolute;
 	right: 0;
@@ -603,7 +603,7 @@ table {
 	line-height: 1.5;
 }
 
-/*=== Aside main page (feeds) */
+/* === Aside main page (feeds) */
 /* .feed.item.empty.active {
 }
 
@@ -634,7 +634,7 @@ table {
 	border-radius: 3px;
 } */
 
-/*=== Prompt (centered) */
+/* === Prompt (centered) */
 .prompt {
 	text-align: center;
 }
@@ -644,7 +644,7 @@ table {
 }
 
 .prompt form {
-	margin: 10px auto 20px auto;
+	margin: 10px auto 20px;
 	width: 180px;
 }
 
@@ -656,7 +656,7 @@ table {
 	margin: 20px 0;
 }
 
-/*=== New article notification */
+/* === New article notification */
 #new-article {
 	text-align: center;
 }
@@ -670,7 +670,7 @@ table {
 	text-decoration: none;
 }
 
-/*=== Transition indication, e.g. day */
+/* === Transition indication, e.g. day */
 .transition {
 	padding: 0 10px;
 	font-weight: bold;
@@ -685,10 +685,11 @@ table {
 
 .transition .name {
 	padding: 0 10px 0 0;
+
 	@apply text-right text-black/30;
 }
 
-/*=== Index menu */
+/* === Index menu */
 .nav_menu {
 	@apply text-center p-4;
 }
@@ -703,7 +704,7 @@ table {
 	}
 }
 
-/*=== Feed articles */
+/* === Feed articles */
 .flux {}
 
 .flux:hover {}
@@ -738,13 +739,11 @@ table {
 	}
 
 	.thumbnail:not(:empty) {
-
 		@apply self-stretch justify-self-stretch;
 		@apply w-[120px];
 		@apply p-0 bg-gray-200/20;
 
 		img {
-
 			@apply w-full h-full;
 			@apply object-cover;
 		}
@@ -757,6 +756,10 @@ table {
 
 	.item-title {
 		@apply flex flex-row gap-1 items-center;
+		/** @todo check and make it work */
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 
 		/** feed item is unread */
 		&:not([data-unread="0"]) {
@@ -785,6 +788,11 @@ table {
 
 .flux .item.thumbnail {}
 
+.flux .item.website {
+	width: 200px;
+	max-width: 200px;
+}
+
 .flux .item.website a {
 	.favicon {
 		@apply size-6;
@@ -803,7 +811,7 @@ table {
 	text-align: center;
 }
 
-/*=== Content of feed articles */
+/* === Content of feed articles */
 .content {
 	padding: 20px 10px;
 }
@@ -831,7 +839,7 @@ table {
 	margin: 0;
 }
 
-/*=== Notification and actualize notification */
+/* === Notification and actualize notification */
 .notification {}
 
 .notification.good {}
@@ -842,7 +850,7 @@ table {
 
 .notification.bad .close:hover {}
 
-/*=== "Load more" part */
+/* === "Load more" part */
 #bigMarkAsRead.big {
 	text-align: center;
 	text-decoration: none;
@@ -852,11 +860,11 @@ table {
 
 #bigMarkAsRead:hover .bigTick {}
 
-/*=== Navigation menu (for articles) */
+/* === Navigation menu (for articles) */
 #nav_entries {}
 
-/*=== READER VIEW */
-/*================*/
+/* === READER VIEW */
+/* ================ */
 #stream.reader .flux {
 	background-color: #f0f0f0;
 	color: #333;
@@ -867,8 +875,8 @@ table {
 	border-color: #ddd;
 }
 
-/*=== GLOBAL VIEW */
-/*================*/
+/* === GLOBAL VIEW */
+/* ================ */
 .box.category .box-title .title {
 	font-weight: normal;
 	text-decoration: none;
@@ -894,8 +902,8 @@ table {
 	text-shadow: none;
 }
 
-/*=== DIVERS */
-/*===========*/
+/* === DIVERS */
+/* =========== */
 .aside.aside_feed .nav-form input,
 .aside.aside_feed .nav-form select {
 	width: 140px;
@@ -909,8 +917,8 @@ table {
 	right: 33px;
 }
 
-/*=== STATISTICS */
-/*===============*/
+/* === STATISTICS */
+/* =============== */
 .stat {
 	margin: 10px 0 20px;
 }
@@ -924,10 +932,10 @@ table {
 	text-align: center;
 }
 
-/*=== MOBILE */
-/*===========*/
+/* === MOBILE */
+/* =========== */
 
-@media (max-width: 840px) {
+@media (width <= 840px) {
 	.aside {
 		transition: width 200ms linear;
 	}
