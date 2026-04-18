@@ -14,7 +14,7 @@
     "watch:css:nolint": "node build.ts watch --no-lint",
     "lint:css": "stylelint \"./src/css/**/*.css\" \"./base.css\" --fix --cache",
     "help:css": "node build.ts --help",
-    "release": "release-it --config .release-it.ts",
+    "release": "release-it --ci --config .release-it.ts",
     "release:debug": "DEBUG=* release-it --config .release-it.ts"
   },
   "devDependencies": {
