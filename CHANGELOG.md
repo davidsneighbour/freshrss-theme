@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.6](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.5...v1.1.6) (2026-04-18)
+
+### Build
+
+* **fix:** release without questions ([15b7135](https://github.com/davidsneighbour/kollitsch.dev/commit/15b7135f97acb9a8e46d292fadacc75e51812d9a))
+
 ## [1.1.5](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.4...v1.1.5) (2026-04-18)
 
 ### Build
