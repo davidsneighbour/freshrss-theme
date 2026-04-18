@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.9](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.8...v1.1.9) (2026-04-18)
+
+### Build
+
+* **fix:** proper gh-token reference ([d8b56aa](https://github.com/davidsneighbour/kollitsch.dev/commit/d8b56aa71c26eecc3bfc0a68795ff42850539244))
+
 ## [1.1.8](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.7...v1.1.8) (2026-04-18)
 
 ### Build
