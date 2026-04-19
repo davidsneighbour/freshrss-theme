@@ -17,9 +17,13 @@ import chokidar, { type FSWatcher } from 'chokidar';
 
 type Mode = 'build' | 'watch';
 
-interface Config {
+interface BuildTarget {
   input: string;
   output: string;
+}
+
+interface Config {
+  builds: BuildTarget[];
   content: string[];
   watch: string[];
 }
@@ -50,6 +54,11 @@ try {
   process.exit(1);
 }
 
+if (!Array.isArray(config.builds) || config.builds.length === 0) {
+  console.error('Invalid `theme.config.json`: `builds` must contain at least one build target.');
+  process.exit(1);
+}
+
 /**
  * Resolve a local binary from `node_modules/.bin`.
  *
@@ -70,7 +79,7 @@ function getLocalBinary(binaryName: string): string {
  * @returns Array of CSS source paths for Stylelint.
  */
 function getStylelintTargets(): string[] {
-  return [config.input];
+  return config.builds.map((build) => build.input);
 }
 
 /**
@@ -123,21 +132,31 @@ function run(command: string, args: string[], options: RunOptions = {}): Promise
 }
 
 /**
- * Start Tailwind in build or watch mode.
+ * Start one Tailwind process for a single build target.
  *
  * In watch mode, this process stays alive until interrupted.
  *
+ * @param build Build target configuration.
  * @returns Promise that resolves when Tailwind exits successfully.
  */
-async function runTailwind(): Promise<void> {
-  const args: string[] = ['-i', config.input, '-o', config.output];
+async function runTailwindTarget(build: BuildTarget): Promise<void> {
+  const args: string[] = ['-i', build.input, '-o', build.output];
 
   if (mode === 'watch') {
     args.push('--watch');
   }
 
-  console.log(`Running Tailwind (${mode})...`);
+  console.log(`Running Tailwind (${mode}) for ${build.input} -> ${build.output}...`);
   await run(getLocalBinary('tailwindcss'), args);
+}
+
+/**
+ * Start Tailwind for all configured build targets.
+ *
+ * @returns Promise that resolves when all Tailwind processes complete.
+ */
+async function runTailwind(): Promise<void> {
+  await Promise.all(config.builds.map(async (build) => runTailwindTarget(build)));
 }
 
 /**
@@ -161,12 +180,10 @@ async function runStylelint(): Promise<void> {
 
   const args: string[] = [...targets];
 
-  // Auto-fix only in watch mode
   if (mode === 'watch') {
     args.push('--fix');
   }
 
-  // Optional but recommended: speed up repeated runs
   args.push('--cache');
 
   console.log(`Running Stylelint on: ${targets.join(', ')}${mode === 'watch' ? ' (fix enabled)' : ''}`);
@@ -174,7 +191,6 @@ async function runStylelint(): Promise<void> {
   await run(getLocalBinary('stylelint'), args, {
     allowFailure: mode === 'watch',
   });
-
 }
 
 let lintInProgress = false;

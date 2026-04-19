@@ -1,6 +1,14 @@
 {
-  "input": "./src/css/base.css",
-  "output": "./base.css",
+  "builds": [
+    {
+      "input": "./src/css/base.css",
+      "output": "./base.css"
+    },
+    {
+      "input": "./src/css/frss.css",
+      "output": "./frss.css"
+    }
+  ],
   "content": [
     "./metadata.json",
     "./src/**/*.{css,ts,js,txt}",
