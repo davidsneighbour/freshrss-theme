@@ -294,15 +294,6 @@ body {
 	@apply h-full;
 }
 
-a,
-button.as-link {
-	@apply text-(--link-color) hover:text-(--link-color-hover);
-	@apply outline-0;
-}
-
-table {
-	@apply border-collapse;
-}
 
 
 
@@ -319,9 +310,7 @@ table {
 	padding: 5px 0;
 }
 
-.form-group.form-actions .btn {
-	/* margin: 0 10px; */
-}
+.form-group.form-actions .btn {}
 
 .form-group .group-name {
 	padding: 10px 0;
@@ -552,7 +541,7 @@ table {
 /* === STRUCTURE */
 /* =============== */
 /* === Header */
-.header {
+/* .header {
 	height: 85px;
 }
 
@@ -571,7 +560,7 @@ table {
 
 .header>.item.search input {
 	width: 350px;
-}
+} */
 
 /* === Body */
 #global {
@@ -602,37 +591,6 @@ table {
 	padding: 0 10px;
 	line-height: 1.5;
 }
-
-/* === Aside main page (feeds) */
-/* .feed.item.empty.active {
-}
-
-.feed.item.error.active {
-}
-
-.feed.item.empty,
-.feed.item.empty > a {
-}
-
-.feed.item.error,
-.feed.item.error > a {
-}
-
-.feed.item.empty.active,
-.feed.item.error.active,
-.feed.item.empty.active > a,
-.feed.item.error.active > a {
-}
-
-.aside_feed .tree-folder-items .dropdown-menu::after {
-	left: 2px;
-}
-
-.aside_feed .tree-folder-items .item .dropdown-target:target ~ .dropdown-toggle > .icon,
-.aside_feed .tree-folder-items .item:hover .dropdown-toggle > .icon,
-.aside_feed .tree-folder-items .item.active .dropdown-toggle > .icon {
-	border-radius: 3px;
-} */
 
 /* === Prompt (centered) */
 .prompt {
@@ -719,37 +677,6 @@ table {
 
 .flux.favorite:not(.current):hover .item.title {}
 
-.flux ul {
-	@apply flex flex-row gap-1 justify-between h-full items-center;
-
-	.item:empty {
-		@apply hidden;
-	}
-
-
-	.manage,
-	.labels,
-	.share,
-	.link {
-		@apply text-xs;
-	}
-
-	.titleAuthorSummaryDate {
-		@apply grow;
-	}
-
-	.thumbnail:not(:empty) {
-		@apply self-stretch justify-self-stretch;
-		@apply w-[120px];
-		@apply p-0 bg-gray-200/20;
-
-		img {
-			@apply w-full h-full;
-			@apply object-cover;
-		}
-	}
-}
-
 /** sidebar feed title */
 .item.feed {
 	@apply flex flex-row gap-1 items-center;
@@ -798,7 +725,7 @@ table {
 		@apply size-6;
 	}
 
-	@apply flex flex-row items-center flex-nowrap gap-1;
+	@apply flex flex-row items-start flex-nowrap gap-1;
 
 	.websiteName {
 		@apply overflow-hidden text-ellipsis;
@@ -935,7 +862,7 @@ table {
 /* === MOBILE */
 /* =========== */
 
-@media (width <= 840px) {
+@media (width <=840px) {
 	.aside {
 		transition: width 200ms linear;
 	}
@@ -1015,4 +942,587 @@ table {
 #bigMarkAsRead.big {
 	/* disable weird 100% margin for big mark as read button */
 	margin: auto;
+}
+
+
+
+
+.item.titleAuthorSummaryDate {
+	@apply flex flex-col gap-1;
+}
+
+.item.titleAuthorSummaryDate>.item-element.title.multiline {}
+
+.item.titleAuthorSummaryDate>.item-element.date {
+	@apply order-first;
+}
+
+.item.titleAuthorSummaryDate>.summary {
+	@apply line-clamp-3;
+}
+
+
+.flux_header.websitefull {
+	display: grid;
+	grid-template-columns:
+		2.5rem
+		/* read */
+		2.5rem
+		/* bookmark */
+		14rem
+		/* website */
+		8rem
+		/* thumbnail */
+		minmax(0, 1fr)
+		/* title/author/summary/date */
+		2.5rem
+		/* labels */
+		2.5rem
+		/* share */
+		2.5rem;
+	/* link */
+	align-items: start;
+	gap: 0.75rem;
+}
+
+
+/*******************************************************************************
+ * MARK: Action icons
+ *
+ * FreshRSS renders several action buttons as <img class="icon"> inside links.
+ * We hide those original bitmap/SVG image tags and render replacement icons via
+ * ::before using CSS masks instead.
+ *
+ * Why this exists:
+ * * keeps icon rendering consistent across the theme
+ * * allows colouring icons via currentColor
+ * * supports state-based icon switching without changing the HTML
+ *
+ * Current replacements:
+ * * read/unread
+ * * bookmark/favourite
+ * * labels
+ * * share
+ * * external link
+ ******************************************************************************/
+
+/*******************************************************************************
+ * Shared replacement mechanics
+ *
+ * These selectors define the common behaviour for all replaced action icons:
+ * * make the clickable element an inline flex container
+ * * hide the original <img class="icon">
+ * * render a pseudo-element with a masked SVG icon
+ ******************************************************************************/
+a.item-element.read,
+a.item-element.bookmark,
+.item.labels .dropdown-toggle,
+.item.share .dropdown-toggle,
+.item.link .item-element {
+	@apply inline-flex items-center justify-center relative;
+}
+
+a.item-element.read>img.icon,
+a.item-element.bookmark>img.icon,
+.item.labels .dropdown-toggle>img.icon,
+.item.share .dropdown-toggle>img.icon,
+.item.link .item-element>img.icon {
+	@apply hidden;
+}
+
+
+
+
+a.item-element.read::before,
+a.item-element.bookmark::before,
+.item.labels .dropdown-toggle::before,
+.item.share .dropdown-toggle::before,
+.item.link .item-element::before {
+	content: "";
+	@apply w-5 h-5;
+
+	/* The icon colour follows the text colour of the parent link/button. */
+	background-color: currentColor;
+
+	/* Normalise mask rendering across all replacement icons. */
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+
+	-webkit-mask-position: center;
+	mask-position: center;
+
+	-webkit-mask-size: contain;
+	mask-size: contain;
+
+	/* smooth scaling for all replacement icons */
+	transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+	/* will-change: transform; // not required for now */
+}
+
+/* subtle hover scale */
+a.item-element.read:hover::before,
+a.item-element.bookmark:hover::before,
+.item.labels .dropdown-toggle:hover::before,
+.item.share .dropdown-toggle:hover::before,
+.item.link .item-element:hover::before {
+	transform: scale(1.25);
+}
+
+/* subtle press scale */
+a.item-element.read:active::before,
+a.item-element.bookmark:active::before,
+.item.labels .dropdown-toggle:active::before,
+.item.share .dropdown-toggle:active::before,
+.item.link .item-element:active::before {
+	transform: scale(0.95);
+}
+
+/*******************************************************************************
+ * Read / unread
+ *
+ * State source:
+ * * .flux.not_read      => unread entry
+ * * .flux:not(.not_read) => read entry
+ *
+ * The clickable element itself does not carry the state. The state lives on the
+ * outer .flux container, so we switch the icon from there.
+ ******************************************************************************/
+.flux:not(.not_read) a.item-element.read::before {
+	-webkit-mask-image: url('./assets/icons/read.svg');
+	mask-image: url('./assets/icons/read.svg');
+}
+
+.flux.not_read a.item-element.read::before {
+	-webkit-mask-image: url('./assets/icons/unread.svg');
+	mask-image: url('./assets/icons/unread.svg');
+}
+
+/*******************************************************************************
+ * Bookmark / favourite
+ *
+ * State source:
+ * * .flux.favorite       => highlighted favourite state
+ * * .flux:not(.favorite) => normal state
+ *
+ * We currently use a single icon silhouette and change its colour by state.
+ * If a true outline-vs-filled variant is needed later, that would require a
+ * different SVG strategy.
+ ******************************************************************************/
+a.item-element.bookmark::before {
+	-webkit-mask-image: url('./assets/icons/sparkles.svg');
+	mask-image: url('./assets/icons/sparkles.svg');
+}
+
+.flux:not(.favorite) a.item-element.bookmark {
+	@apply text-[var(--color-dark)];
+}
+
+.flux.favorite a.item-element.bookmark {
+	@apply text-[var(--color-yellow-800)];
+}
+
+/*******************************************************************************
+ * Static action icons
+ *
+ * These icons do not currently depend on any outer state. They always render
+ * the same mask and inherit their colour from the surrounding text colour.
+ *
+ * Structural selectors are used instead of title attributes because the titles
+ * are translated and therefore not stable enough for long-term maintenance.
+ ******************************************************************************/
+.item.labels .dropdown-toggle::before {
+	-webkit-mask-image: url('./assets/icons/tag.svg');
+	mask-image: url('./assets/icons/tag.svg');
+}
+
+.item.share .dropdown-toggle::before {
+	-webkit-mask-image: url('./assets/icons/share-2.svg');
+	mask-image: url('./assets/icons/share-2.svg');
+}
+
+.item.link .item-element::before {
+	-webkit-mask-image: url('./assets/icons/external-link.svg');
+	mask-image: url('./assets/icons/external-link.svg');
+}
+
+/*******************************************************************************
+ * MARK: HEADER LAYOUT
+ *
+ * Goal:
+ * - hide the title/logo block
+ * - make the search area fill the available width
+ * - keep the configure button as a fixed-size icon button on the right
+ ******************************************************************************/
+
+.header {
+	@apply flex justify-between items-center gap-2;
+	@apply px-2 pt-4 pb-2;
+}
+
+.header>.item.title {
+	@apply hidden;
+}
+
+.header>.item.search {
+	@apply min-w-0 flex-1;
+}
+
+.header>.item.search form {
+	@apply w-full;
+}
+
+.header>.item.configure {
+	@apply shrink-0;
+}
+
+/*******************************************************************************
+ * SEARCH FIELD
+ *
+ * Structure:
+ * .item.search
+ *   form
+ *     .stick
+ *       input[type="search"]
+ *       button.btn
+ *
+ * We style the wrapper as the visible field border so input and button read as
+ * one single control.
+ ******************************************************************************/
+
+.header>.item.search .stick {
+	@apply flex items-center w-full rounded-xl border border-zinc-600 bg-zinc-900/80 overflow-hidden;
+}
+
+.header>.item.search input[type="search"] {
+	@apply min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-zinc-100 outline-none border-0 shadow-none;
+}
+
+.header>.item.search input[type="search"]::placeholder {
+	@apply text-zinc-400;
+}
+
+.header>.item.search button.btn {
+	@apply relative inline-flex h-12 w-14 shrink-0 items-center justify-center border-0 bg-transparent p-0 text-zinc-300 transition-transform transition-colors duration-150 ease-out;
+}
+
+.header>.item.search button.btn:hover {
+	@apply text-zinc-100 scale-110;
+}
+
+.header>.item.search button.btn:focus-visible {
+	@apply outline-none ring-2 ring-zinc-400 ring-offset-2 ring-offset-zinc-900;
+}
+
+/* hide original search icon img */
+.header>.item.search button.btn>img.icon {
+	@apply hidden;
+}
+
+/* replacement search icon */
+.header>.item.search button.btn::before {
+	content: "";
+	@apply block h-8 w-8 bg-current;
+
+	-webkit-mask-image: url("./assets/icons/search.svg");
+	mask-image: url("./assets/icons/search.svg");
+
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+
+	-webkit-mask-position: center;
+	mask-position: center;
+
+	-webkit-mask-size: contain;
+	mask-size: contain;
+
+	will-change: transform;
+}
+
+/* remove native input focus styling */
+.header>.item.search input[type="search"]:focus {
+	@apply outline-none ring-0;
+}
+
+/* apply focus styling to the full wrapper */
+.header>.item.search .stick:focus-within {
+	@apply ring-2 ring-zinc-400 ring-offset-2 ring-offset-zinc-900 border-transparent;
+}
+
+/*******************************************************************************
+ * CONFIGURE BUTTON
+ *
+ * FreshRSS uses .item.configure in your markup.
+ * We hide the original img and draw the cogwheel with a masked pseudo-element.
+ ******************************************************************************/
+
+.header>.item.configure .btn.dropdown-toggle {
+	@apply relative inline-flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-600 bg-zinc-900/80 p-0 text-zinc-300 transition-transform transition-colors duration-150 ease-out;
+}
+
+.header>.item.configure .btn.dropdown-toggle:hover {
+	@apply text-zinc-100 scale-110;
+}
+
+.header>.item.configure .btn.dropdown-toggle:focus-visible {
+	@apply outline-none ring-2 ring-zinc-400 ring-offset-2 ring-offset-zinc-900;
+}
+
+/* hide original configure icon img */
+.header>.item.configure .btn.dropdown-toggle>img.icon {
+	@apply hidden;
+}
+
+/* replacement cog icon */
+.header>.item.configure .btn.dropdown-toggle::before {
+	content: "";
+	@apply block h-8 w-8 bg-current;
+
+	-webkit-mask-image: url("./assets/icons/cog.svg");
+	mask-image: url("./assets/icons/cog.svg");
+
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+
+	-webkit-mask-position: center;
+	mask-position: center;
+
+	-webkit-mask-size: contain;
+	mask-size: contain;
+
+	will-change: transform;
+}
+
+
+
+/*******************************************************************************
+ * MARK: TOP TOOLBAR
+ *
+ * Goals:
+ * - full-width toolbar, but controls stay centred as one compact block
+ * - no nth-child / counter-based targeting
+ * - mobile-friendly tap targets
+ * - icon replacement via CSS masks
+ * - dropdown internals intentionally left alone
+ ******************************************************************************/
+
+/* ============================================================================
+ * 1. BAR LAYOUT
+ * ========================================================================== */
+
+.nav_menu {
+	@apply w-full flex flex-wrap items-center justify-center gap-2;
+	@apply bg-white;
+}
+
+.nav_menu>.group,
+.nav_menu>.dropdown,
+.nav_menu>#nav_menu_queries,
+.nav_menu>#nav_menu_sort,
+.nav_menu>#nav_menu_read_all {
+	@apply flex items-center justify-center;
+}
+
+/*
+ * Keep the visual cluster centred even when the bar spans the full page width.
+ * Groups keep their natural width, the nav itself handles centring.
+ */
+.nav_menu>.group,
+.nav_menu>#nav_menu_queries,
+.nav_menu>#nav_menu_sort,
+.nav_menu>#nav_menu_read_all {
+	@apply shrink-0;
+}
+
+/* ============================================================================
+ * 2. BASE BUTTON / TAP TARGET STYLING
+ * ========================================================================== */
+
+.nav_menu .btn,
+.nav_menu button.btn,
+.nav_menu a.btn {
+	@apply inline-flex items-center justify-center rounded-lg p-2 min-h-9 min-w-9;
+	transition-property: transform, box-shadow, background-color, opacity;
+	transition-duration: 150ms;
+	transition-timing-function: ease-out;
+}
+
+/*
+ * Slight button feel without hard theme colours.
+ * Uses currentColor-derived background only.
+ */
+.nav_menu .btn:hover {
+	@apply shadow-sm;
+	background-color: color-mix(in srgb, currentColor 6%, transparent);
+}
+
+.nav_menu .btn:active {
+	transform: scale(0.97);
+	background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/*
+ * Keyboard focus for the full tap target, not just the hidden image.
+ */
+.nav_menu .btn:focus-visible {
+	@apply outline-none ring-2 ring-offset-2;
+}
+
+/*
+ * "Mark as read" is text, not icon-only.
+ * Keep it comfortably tappable and visually aligned with the icon buttons.
+ */
+#nav_menu_read_all .read_all.btn {
+	@apply px-3 py-2 min-h-9;
+}
+
+/* ============================================================================
+ * 3. ICON TRANSITION BEHAVIOUR
+ * ========================================================================== */
+
+.nav_menu .btn::before,
+.nav_menu .btn>img.icon {
+	transition:
+		transform 150ms ease-out,
+		opacity 150ms ease-out,
+		filter 150ms ease-out;
+}
+
+.nav_menu .btn:hover::before,
+.nav_menu .btn:hover>img.icon {
+	transform: scale(1.2);
+}
+
+.nav_menu .btn:active::before,
+.nav_menu .btn:active>img.icon {
+	transform: scale(0.97);
+}
+
+/* ============================================================================
+ * 4. GENERIC SVG REPLACEMENT SYSTEM
+ * ========================================================================== */
+
+/*
+ * Hide original toolbar icons where we replace them with our own masked SVGs.
+ * Dropdown menu internals are not touched here.
+ */
+#nav_menu_toggle_aside .btn>img.icon,
+#nav_menu_actions>a.btn>img.icon,
+#nav_menu_queries>a.btn>img.icon,
+#nav_menu_read .dropdown-toggle.btn>img.icon,
+#nav_menu_views>a.btn>img.icon,
+#nav_menu_sort #toggle-order>img.icon,
+#nav_menu_actualize>a.btn>img.icon {
+	@apply hidden;
+}
+
+/*
+ * Base replacement icon box.
+ * All toolbar icons are exactly h-5 w-5 as requested.
+ */
+#nav_menu_toggle_aside .btn::before,
+#nav_menu_actions>a.btn::before,
+#nav_menu_queries>a.btn::before,
+#nav_menu_read .dropdown-toggle.btn::before,
+#nav_menu_views>a.btn::before,
+#nav_menu_sort #toggle-order::before,
+#nav_menu_actualize>a.btn::before {
+	content: "";
+	@apply block h-5 w-5;
+	background-color: currentColor;
+
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+}
+
+/* ============================================================================
+ * 5. SPECIFIC ICON REPLACEMENTS
+ * ========================================================================== */
+
+/* Sidebar toggle: active = close, inactive = open */
+#nav_menu_toggle_aside .btn::before {
+	-webkit-mask-image: url("./assets/icons/panel-right-close.svg");
+	mask-image: url("./assets/icons/panel-right-close.svg");
+}
+
+#nav_menu_toggle_aside .btn.active::before {
+	-webkit-mask-image: url("./assets/icons/panel-right-open.svg");
+	mask-image: url("./assets/icons/panel-right-open.svg");
+}
+
+/* Read / unread */
+#toggle-read::before {
+	-webkit-mask-image: url("./assets/icons/read.svg");
+	mask-image: url("./assets/icons/read.svg");
+}
+
+#toggle-unread::before {
+	-webkit-mask-image: url("./assets/icons/unread.svg");
+	mask-image: url("./assets/icons/unread.svg");
+}
+
+/* Starred / non-starred */
+#toggle-starred::before {
+	-webkit-mask-image: url("./assets/icons/sparkles.svg");
+	mask-image: url("./assets/icons/sparkles.svg");
+	background-color: #eab308;
+}
+
+#toggle-non-starred::before {
+	-webkit-mask-image: url("./assets/icons/sparkles.svg");
+	mask-image: url("./assets/icons/sparkles.svg");
+}
+
+/* User queries */
+#toggle-userqueries::before {
+	-webkit-mask-image: url("./assets/icons/bookmark.svg");
+	mask-image: url("./assets/icons/bookmark.svg");
+}
+
+/* Mark-as-read dropdown toggle */
+#nav_menu_read .dropdown-toggle.btn::before {
+	-webkit-mask-image: url("./assets/icons/chevron-down.svg");
+	mask-image: url("./assets/icons/chevron-down.svg");
+}
+
+/* View modes */
+#nav_menu_views .view-normal::before {
+	-webkit-mask-image: url("./assets/icons/layout-list.svg");
+	mask-image: url("./assets/icons/layout-list.svg");
+}
+
+#nav_menu_views .view-global::before {
+	-webkit-mask-image: url("./assets/icons/layout-grid.svg");
+	mask-image: url("./assets/icons/layout-grid.svg");
+}
+
+#nav_menu_views .view-reader::before {
+	-webkit-mask-image: url("./assets/icons/book-open.svg");
+	mask-image: url("./assets/icons/book-open.svg");
+}
+
+/*
+ * Sort icon:
+ * default / DESC  -> arrow-down-narrow-wide
+ * ASC             -> arrow-up-wide-narrow
+ *
+ * This uses the href on the visible toolbar toggle, not item order.
+ */
+#nav_menu_sort #toggle-order::before {
+	-webkit-mask-image: url("./assets/icons/arrow-down-narrow-wide.svg");
+	mask-image: url("./assets/icons/arrow-down-narrow-wide.svg");
+}
+
+#nav_menu_sort #toggle-order[href*="order=ASC"]::before {
+	-webkit-mask-image: url("./assets/icons/arrow-up-wide-narrow.svg");
+	mask-image: url("./assets/icons/arrow-up-wide-narrow.svg");
+}
+
+/* Refresh */
+#nav_menu_actualize #actualize::before {
+	-webkit-mask-image: url("./assets/icons/refresh-ccw.svg");
+	mask-image: url("./assets/icons/refresh-ccw.svg");
 }
