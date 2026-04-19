@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.10...v1.2.0) (2026-04-19)
+
+### Features
+
+* build frss.css from source and remove compiled files ([d336ae8](https://github.com/davidsneighbour/kollitsch.dev/commit/d336ae8847a2d4ef79a29e4731cc2ffdec7d9bb7))
+* icons, toolbars, item layout ([78daf03](https://github.com/davidsneighbour/kollitsch.dev/commit/78daf03da6a84a1d80228cd9d90834fe75bf7c44))
+
 ## [1.1.10](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.9...v1.1.10) (2026-04-18)
 
 ### Build
