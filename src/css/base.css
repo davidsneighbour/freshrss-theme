@@ -540,27 +540,6 @@ body {
 
 /* === STRUCTURE */
 /* =============== */
-/* === Header */
-/* .header {
-	height: 85px;
-}
-
-.header>.item {
-	vertical-align: middle;
-	text-align: center;
-}
-
-.header>.item.title h1 {
-	margin: 0.5em 0;
-}
-
-.header>.item.title h1 a {
-	text-decoration: none;
-}
-
-.header>.item.search input {
-	width: 350px;
-} */
 
 /* === Body */
 #global {
@@ -570,9 +549,6 @@ body {
 .aside {}
 
 /** sidebar feed */
-#aside_feed {
-	@apply p-4;
-}
 
 .aside.aside_feed {
 	padding: 10px 0;
@@ -946,19 +922,25 @@ body {
 
 
 
-
+/*******************************************************************************
+ * MARK: ITEM
+ ******************************************************************************/
 .item.titleAuthorSummaryDate {
 	@apply flex flex-col gap-1;
-}
 
-.item.titleAuthorSummaryDate>.item-element.title.multiline {}
+	.item-element.title.multiline {}
 
-.item.titleAuthorSummaryDate>.item-element.date {
-	@apply order-first;
-}
+	.item-element.date {
+		@apply order-first;
+	}
 
-.item.titleAuthorSummaryDate>.summary {
-	@apply line-clamp-3;
+	.summary {
+		@apply line-clamp-3;
+	}
+
+	.author {
+		@apply text-sm text-gray-400;
+	}
 }
 
 
@@ -1190,7 +1172,7 @@ a.item-element.bookmark::before {
  ******************************************************************************/
 
 .header>.item.search .stick {
-	@apply flex items-center w-full rounded-xl border border-zinc-600 bg-zinc-900/80 overflow-hidden;
+	@apply flex items-center w-full rounded-xl border border-zinc-600 overflow-hidden;
 }
 
 .header>.item.search input[type="search"] {
@@ -1256,7 +1238,7 @@ a.item-element.bookmark::before {
  ******************************************************************************/
 
 .header>.item.configure .btn.dropdown-toggle {
-	@apply relative inline-flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-600 bg-zinc-900/80 p-0 text-zinc-300 transition-transform transition-colors duration-150 ease-out;
+	@apply relative inline-flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-600 p-0 transition-transform transition-colors duration-150 ease-out;
 }
 
 .header>.item.configure .btn.dropdown-toggle:hover {
@@ -1525,4 +1507,33 @@ a.item-element.bookmark::before {
 #nav_menu_actualize #actualize::before {
 	-webkit-mask-image: url("./assets/icons/refresh-ccw.svg");
 	mask-image: url("./assets/icons/refresh-ccw.svg");
+}
+
+
+
+/*********************************
+ * MARK: ERROR INDICATION
+ ******************************************************************************/
+.category .title.error::before,
+.item.feed.error .item-title .title::before,
+.box-content .item.feed.error .item-title::before {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.35em;
+	vertical-align: -0.125em;
+	background-color: var(--frss-font-color-error);
+
+	-webkit-mask-image: url("./assets/icons/shield-alert.svg");
+	mask-image: url("./assets/icons/shield-alert.svg");
+
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+
+	-webkit-mask-position: center;
+	mask-position: center;
+
+	-webkit-mask-size: contain;
+	mask-size: contain;
 }
