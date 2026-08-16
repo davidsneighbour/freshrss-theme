@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/davidsneighbour/freshrss-theme/compare/v1.1.10...v2.0.0) (2026-08-16)
+
+### Feat
+
+* **theme:** rebuild pipeline as single dark theme with self-hosted Inter ([75b3654](https://github.com/davidsneighbour/freshrss-theme/commit/75b36549d159c1a5eeae300b4ecf6a00769d936e))
+
+### Docs
+
+* add TypeScript-preference assistant rule to CLAUDE.md ([9aa6f1f](https://github.com/davidsneighbour/freshrss-theme/commit/9aa6f1faf9dcaf702096d538d4ec2d704273d4f6))
+
+### Build
+
+* **deps:** update dependencies ([3cca4fb](https://github.com/davidsneighbour/freshrss-theme/commit/3cca4fb644bccbc3f79fabb1a2fbeafe0b1cac2a))
+* onboard shared DNBHQ tooling (tsconfig, Biome, markdownlint, release, Renovate) ([4d6f25d](https://github.com/davidsneighbour/freshrss-theme/commit/4d6f25d0de9fa6032e22a3dc3defdd41329f66b8))
+* **vscode:** update workspace configuration ([06663ac](https://github.com/davidsneighbour/freshrss-theme/commit/06663ac1eb01efadd6f7e2a83023792f78265c36))
+
 ## [1.1.10](https://github.com/davidsneighbour/kollitsch.dev/compare/v1.1.9...v1.1.10) (2026-04-18)
 
 ### Build
