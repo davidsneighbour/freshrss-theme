@@ -11,15 +11,19 @@
  */
 
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import chokidar, { type FSWatcher } from 'chokidar';
 
 type Mode = 'build' | 'watch';
 
-interface Config {
+interface Target {
   input: string;
   output: string;
+}
+
+interface Config {
+  targets: Target[];
   content: string[];
   watch: string[];
 }
@@ -62,15 +66,41 @@ function getLocalBinary(binaryName: string): string {
 }
 
 /**
+ * Self-hosted font files (latin subset, variable weight) copied from the
+ * @fontsource-variable packages into `fonts/` so `src/css/fonts.css` can
+ * reference them with a plain relative `url()`, no CDN involved.
+ */
+const FONT_FILES: string[] = [
+  'node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',
+];
+
+/**
+ * Copy the self-hosted font files this theme uses from `node_modules` into
+ * `fonts/` at the repo root.
+ */
+function copyFonts(): void {
+  const fontsDir = path.resolve(process.cwd(), 'fonts');
+  mkdirSync(fontsDir, { recursive: true });
+
+  for (const source of FONT_FILES) {
+    const sourcePath = path.resolve(process.cwd(), source);
+    const destPath = path.join(fontsDir, path.basename(source));
+    copyFileSync(sourcePath, destPath);
+  }
+
+  console.log(`Copied ${FONT_FILES.length} font file(s) to ${path.relative(process.cwd(), fontsDir)}/`);
+}
+
+/**
  * Returns the CSS source files that should be linted and watched.
  *
  * This intentionally includes only the input source file(s), not the generated
- * Tailwind output file.
+ * Tailwind output files.
  *
  * @returns Array of CSS source paths for Stylelint.
  */
 function getStylelintTargets(): string[] {
-  return [config.input];
+  return config.targets.map((target) => target.input);
 }
 
 /**
@@ -123,21 +153,42 @@ function run(command: string, args: string[], options: RunOptions = {}): Promise
 }
 
 /**
- * Start Tailwind in build or watch mode.
+ * Run Tailwind once for a single input/output target.
  *
- * In watch mode, this process stays alive until interrupted.
+ * The Tailwind CLI only accepts one input/output pair per process, so each
+ * configured target needs its own invocation.
  *
+ * @param target Input/output pair to compile.
  * @returns Promise that resolves when Tailwind exits successfully.
  */
-async function runTailwind(): Promise<void> {
-  const args: string[] = ['-i', config.input, '-o', config.output];
+async function runTailwindTarget(target: Target): Promise<void> {
+  const args: string[] = ['-i', target.input, '-o', target.output];
 
   if (mode === 'watch') {
     args.push('--watch');
   }
 
-  console.log(`Running Tailwind (${mode})...`);
+  console.log(`Running Tailwind (${mode}) for ${target.input} -> ${target.output}...`);
   await run(getLocalBinary('tailwindcss'), args);
+}
+
+/**
+ * Start Tailwind in build or watch mode for every configured target.
+ *
+ * In build mode, targets run one after another. In watch mode, each target's
+ * `tailwindcss --watch` process is long-lived, so all targets run concurrently.
+ *
+ * @returns Promise that resolves when Tailwind exits successfully for all targets.
+ */
+async function runTailwind(): Promise<void> {
+  if (mode === 'watch') {
+    await Promise.all(config.targets.map((target) => runTailwindTarget(target)));
+    return;
+  }
+
+  for (const target of config.targets) {
+    await runTailwindTarget(target);
+  }
 }
 
 /**
@@ -273,6 +324,8 @@ function startStylelintWatcher(): FSWatcher {
  */
 async function main(): Promise<void> {
   try {
+    copyFonts();
+
     if (mode === 'build') {
       await runTailwind();
       await runStylelint();

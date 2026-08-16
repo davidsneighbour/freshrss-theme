@@ -1,3 +1,10 @@
 node_modules
 .cache
 .stylelintcache
+
+# Compiled theme CSS (built from src/css/* via `npm run build:css`)
+/base.css
+/frss.css
+
+# Self-hosted font files (copied from node_modules via `npm run build:css`)
+/fonts/

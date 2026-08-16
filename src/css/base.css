@@ -1,6 +1,7 @@
 /* stylelint-disable */
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
+@import "./fonts.css";
 /* stylelint-enable */
 
 /* stylelint-disable block-no-empty  selector-class-pattern */
@@ -291,7 +292,7 @@
 /** MARK: RESET */
 html,
 body {
-	@apply h-full;
+	@apply h-full font-body;
 }
 
 a,
@@ -789,8 +790,8 @@ table {
 .flux .item.thumbnail {}
 
 .flux .item.website {
-	width: 200px;
-	max-width: 200px;
+	width: 300px;
+	max-width: 300px;
 }
 
 .flux .item.website a {

@@ -1,6 +1,8 @@
 {
-  "input": "./src/css/base.css",
-  "output": "./base.css",
+  "targets": [
+    { "input": "./src/css/frss.css", "output": "./frss.css" },
+    { "input": "./src/css/base.css", "output": "./base.css" }
+  ],
   "content": [
     "./metadata.json",
     "./src/**/*.{css,ts,js,txt}",

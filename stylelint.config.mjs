@@ -7,6 +7,8 @@ export default {
     'block-no-empty': null, // We often have empty blocks in our CSS, and it doesn't cause any issues.
     'selector-id-pattern': null, // freshRSS has its own IDs
     'selector-class-pattern': null, // freshRSS has its own classes
+    'custom-property-pattern': null, // freshRSS has its own custom property names (e.g. --frss-noThumbnailImage-background-color)
+    'no-descending-specificity': null, // frss.css mirrors FreshRSS's own selector order; reordering it would make it harder to diff against upstream
     'alpha-value-notation': 'number',
     'color-function-notation': 'modern',
     'comment-empty-line-before': null,

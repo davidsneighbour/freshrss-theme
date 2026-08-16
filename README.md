@@ -32,8 +32,10 @@ That gives Tailwind access to the FreshRSS PHP and template files without needin
 
 ```json
 {
-  "input": "./src/css/base.css",
-  "output": "./base.css",
+  "targets": [
+    { "input": "./src/css/frss.css", "output": "./frss.css" },
+    { "input": "./src/css/base.css", "output": "./base.css" }
+  ],
   "content": [
     "./metadata.json",
     "./src/**/*.{css,ts,js,txt}",
@@ -53,9 +55,10 @@ That gives Tailwind access to the FreshRSS PHP and template files without needin
 
 ## Output model
 
-* Author your CSS in `src/css/base.css`.
-* The build writes the compiled file to `base.css` in the theme root.
+* Author your CSS in `src/css/frss.css` (mirrors FreshRSS's own default stylesheet) and `src/css/base.css` (the custom theme layered on top).
+* The build writes the compiled files to `frss.css` and `base.css` in the theme root. These are build artifacts and are gitignored — run `npm run build:css` after cloning or pulling before the theme will work.
 * FreshRSS keeps loading `frss.css` and `base.css` from `metadata.json`.
+* RTL is currently out of scope: `frss.rtl.css` and `base.rtl.css` are hand-maintained static files, not part of the build.
 
 ## Commands
 
