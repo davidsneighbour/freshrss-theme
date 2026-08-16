@@ -70,6 +70,7 @@ Both root-level outputs are gitignored build artifacts. RTL is currently out of 
 * FreshRSS's PHP/Twig layout templates are out of reach — they live in the separate FreshRSS project, not here, and can't be adapted to fit the theme. All styling work happens in the CSS files in this repo.
 * Prefer Tailwind utility classes over hand-written CSS declarations wherever an equivalent utility exists. Since the layout markup can't be changed, apply utilities via `@apply` inside the selectors targeting FreshRSS's existing classes/IDs, rather than writing raw property/value declarations.
 * Use `scratch/` for temporary/working files. Never delete or modify a file in `scratch/` that you didn't create yourself — if you need your own working structure in there, create a new subfolder or file rather than touching existing contents.
+* Prefer TypeScript over JavaScript for new scripts and config files (matches `build.ts` and `.release-it.ts`). Only use plain JavaScript/JSON where the tool requires it (e.g. `theme.config.json`, or a config format that doesn't support `.ts`).
 
 ## Stylelint conventions
 
