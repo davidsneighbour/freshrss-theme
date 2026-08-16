@@ -1,21 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "strict": true,
-    "exactOptionalPropertyTypes": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "useUnknownInCatchVariables": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "types": [
-      "node"
-    ]
-  },
-  "include": [
-    "**/*.ts"
-  ]
+  "extends": "@dnbhq/tsconfig/cli",
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }

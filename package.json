@@ -4,6 +4,10 @@
   "description": "A custom theme for FreshRSS with TailwindCSS and stylelint.",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidsneighbour/freshrss-theme.git"
+  },
   "engines": {
     "node": ">=24.0.0"
   },
@@ -14,10 +18,28 @@
     "watch:css:nolint": "node build.ts watch --no-lint",
     "lint:css": "stylelint \"./src/css/**/*.css\" --fix --cache",
     "help:css": "node build.ts --help",
-    "release": "release-it --ci --config .release-it.ts",
-    "release:debug": "DEBUG=* release-it --config .release-it.ts"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "lint:markdown": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc \"**/*.{md,mdx}\" \"#CHANGELOG.md\" \"#scratch\"",
+    "lint:markdown:fix": "markdownlint-cli2 --config ./node_modules/@dnbhq/markdownlint-config/.markdownlint-cli2.jsonc --fix \"**/*.{md,mdx}\" \"#CHANGELOG.md\" \"#scratch\"",
+    "release": "release-it --config .release-it.ts --ci",
+    "release:dry": "release-it --config .release-it.ts --dry-run",
+    "release:force": "release-it --config .release-it.ts --ci --no-increment",
+    "release:patch": "release-it --config .release-it.ts --ci --increment=patch",
+    "release:minor": "release-it --config .release-it.ts --ci --increment=minor",
+    "release:major": "release-it --config .release-it.ts --ci --increment=major"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.8",
+    "@dnbhq/biome-config": "0.2.3",
+    "@dnbhq/markdownlint-config": "0.2.11",
+    "@dnbhq/release-config": "1.1.3",
+    "@dnbhq/tsconfig": "0.1.6",
     "@fontsource-variable/inter": "5.3.0",
     "@release-it/conventional-changelog": "12.0.0",
     "@tailwindcss/cli": "4.3.3",
@@ -28,6 +50,7 @@
     "stylelint": "17.14.1",
     "stylelint-config-standard": "40.0.0",
     "stylelint-order": "8.1.1",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
   }
 }
