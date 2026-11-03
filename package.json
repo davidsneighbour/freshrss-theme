@@ -46,7 +46,7 @@
     "@tailwindcss/forms": "0.5.11",
     "@types/node": "26.2.0",
     "chokidar": "5.0.0",
-    "release-it": "21.0.2",
+    "release-it": "21.1.2",
     "stylelint": "17.14.1",
     "stylelint-config-standard": "40.0.0",
     "stylelint-order": "8.1.1",
